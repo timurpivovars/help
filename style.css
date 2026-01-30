@@ -257,3 +257,20 @@ main {
         font-size: 14px;
     }
 }
+
+.task-box {
+    background-color: #e3f2fd;
+    padding: 20px;
+    border-left: 4px solid #2196f3;
+    margin: 20px 0;
+}
+
+.task-box h3 {
+    color: #1565c0;
+    margin-bottom: 10px;
+}
+
+.task-box p {
+    line-height: 1.8;
+    color: #333;
+}
