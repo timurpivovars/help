@@ -97,7 +97,7 @@ function openTask(taskNumber) {
             </div>
 
             <div class="task-description">
-                <h3>Описание</h3>
+                <h3>Пояснение</h3>
                 <p>${task.description}</p>
             </div>
 
@@ -125,3 +125,4 @@ function goBack() {
         </div>
     `;
 }
+
