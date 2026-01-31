@@ -3,12 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Готовые коды для ЕГЭ</title>
+    <title>ЕГЭ Информатика</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <nav class="task-navigation">
+        <header>
+            <h1 onclick="goBack()" style="cursor: pointer;">ЕГЭ Информатика</h1>
+            <p>Готовые коды для заданий</p>
+        </header>
+
+        <nav class="task-nav">
             <div class="task-buttons">
                 <button class="task-btn" onclick="openTask(1)">1</button>
                 <button class="task-btn" onclick="openTask(2)">2</button>
@@ -46,8 +51,13 @@
                 <p>Сверху номера заданий, жми и получай код</p>
             </div>
         </main>
+
+        <footer>
+            <p>© 2026 ЕГЭ Информатика. Все права не защищены.</p>
+        </footer>
     </div>
 
     <script src="script.js"></script>
+    <script src="script2.js"></script>
 </body>
 </html>
