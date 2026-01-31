@@ -1,4 +1,4 @@
-// Данные для каждого задания
+// Данные для заданий 1-13
 const tasksData = {
     1: {
         title: "Задание 1",
@@ -136,7 +136,7 @@ done()`
     },
     7: {
         title: "Задание 7",
-        description: "Это я решаю либо руками, либо простым циклом",
+        description: "Это решаем либо руками, либо простым циклом",
         code: null
     },
     8: {
@@ -201,7 +201,7 @@ print(k)`
     },
     11: {
         title: "Задание 11",
-        description: "Тут я делаю либо руками либо простым циклом с math",
+        description: "Тут делаем либо руками либо простым циклом с math",
         code: null
     },
     12: {
@@ -308,15 +308,6 @@ print(k)`
     }
 };
 
-// Заполняем данные для всех 27 заданий
-for (let i = 14; i <= 27; i++) {
-    tasksData[i] = {
-        title: `Задание ${i}`,
-        description: `Здесь будет описание задания ${i}`,
-        code: null
-    };
-}
-
 // Функция копирования кода
 function copyCode(button, codeId) {
     const codeBlock = document.getElementById(codeId);
@@ -341,6 +332,12 @@ function copyCode(button, codeId) {
 
 // Функция открытия задания
 function openTask(taskNumber) {
+    // Если задание 14-27, загружаем из другого файла
+    if (taskNumber >= 14) {
+        openTaskFromFile2(taskNumber);
+        return;
+    }
+
     const content = document.getElementById('content');
     const task = tasksData[taskNumber];
 
@@ -466,4 +463,3 @@ function goBack() {
         </div>
     `;
 }
-
