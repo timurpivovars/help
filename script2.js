@@ -236,20 +236,16 @@ for x in range(300001,301000):
     }
 };
 
-// Функция открытия задания из второго файла
 function openTaskFromFile2(taskNumber) {
     const content = document.getElementById('content');
     const task = tasksData2[taskNumber];
 
-    // Убираем активный класс со всех кнопок
     document.querySelectorAll('.task-btn').forEach(btn => {
         btn.classList.remove('active');
     });
 
-    // Добавляем активный класс к выбранной кнопке
     document.querySelectorAll('.task-btn')[taskNumber - 1].classList.add('active');
 
-    // Формируем HTML с текстом задачи, если он есть
     let taskHTML = '';
     if (task.task) {
         taskHTML = `
@@ -260,7 +256,6 @@ function openTaskFromFile2(taskNumber) {
         `;
     }
 
-    // Формируем HTML с кодом, если он есть
     let codeHTML = '';
     if (task.code) {
         codeHTML = `
@@ -276,7 +271,6 @@ function openTaskFromFile2(taskNumber) {
         `;
     }
 
-    // Формируем HTML с множественными задачами
     let tasksHTML = '';
     if (task.tasks) {
         tasksHTML = task.tasks.map((item, index) => {
@@ -296,7 +290,6 @@ function openTaskFromFile2(taskNumber) {
                 </div>
             `;
 
-            // Добавляем дополнительный код, если он есть
             if (item.additionalCode) {
                 itemHTML += `
                     <div class="code-container">
@@ -315,7 +308,6 @@ function openTaskFromFile2(taskNumber) {
         }).join('');
     }
 
-    // Отображаем содержимое задания
     content.innerHTML = `
         <div class="task-content">
             <div class="task-header">
@@ -333,6 +325,5 @@ function openTaskFromFile2(taskNumber) {
         </div>
     `;
 
-    // Плавная прокрутка наверх
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
