@@ -308,7 +308,7 @@ print(k)`
     }
 };
 
-// Функция копирования кода
+
 function copyCode(button, codeId) {
     const codeBlock = document.getElementById(codeId);
     const code = codeBlock.textContent;
@@ -330,9 +330,8 @@ function copyCode(button, codeId) {
     });
 }
 
-// Функция открытия задания
+
 function openTask(taskNumber) {
-    // Если задание 14-27, загружаем из другого файла
     if (taskNumber >= 14) {
         openTaskFromFile2(taskNumber);
         return;
@@ -341,15 +340,12 @@ function openTask(taskNumber) {
     const content = document.getElementById('content');
     const task = tasksData[taskNumber];
 
-    // Убираем активный класс со всех кнопок
     document.querySelectorAll('.task-btn').forEach(btn => {
         btn.classList.remove('active');
     });
 
-    // Добавляем активный класс к выбранной кнопке
     document.querySelectorAll('.task-btn')[taskNumber - 1].classList.add('active');
 
-    // Формируем HTML с текстом задачи, если он есть
     let taskHTML = '';
     if (task.task) {
         taskHTML = `
@@ -360,7 +356,6 @@ function openTask(taskNumber) {
         `;
     }
 
-    // Формируем HTML с кодом, если он есть
     let codeHTML = '';
     if (task.code) {
         codeHTML = `
@@ -375,8 +370,7 @@ function openTask(taskNumber) {
             </div>
         `;
     }
-
-    // Формируем HTML с дополнительной задачей, если она есть
+    
     let additionalTaskHTML = '';
     if (task.additionalTask) {
         additionalTaskHTML = `
@@ -387,7 +381,6 @@ function openTask(taskNumber) {
         `;
     }
 
-    // Формируем HTML с дополнительным кодом, если он есть
     let additionalCodeHTML = '';
     if (task.additionalCode) {
         additionalCodeHTML = `
@@ -403,7 +396,6 @@ function openTask(taskNumber) {
         `;
     }
 
-    // Формируем HTML с множественными задачами (для задания 13)
     let tasksHTML = '';
     if (task.tasks) {
         tasksHTML = task.tasks.map((item, index) => `
@@ -423,7 +415,6 @@ function openTask(taskNumber) {
         `).join('');
     }
 
-    // Отображаем содержимое задания
     content.innerHTML = `
         <div class="task-content">
             <div class="task-header">
@@ -443,15 +434,12 @@ function openTask(taskNumber) {
         </div>
     `;
 
-    // Плавная прокрутка наверх
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Функция возврата к главной странице
 function goBack() {
     const content = document.getElementById('content');
 
-    // Убираем активный класс со всех кнопок
     document.querySelectorAll('.task-btn').forEach(btn => {
         btn.classList.remove('active');
     });
@@ -463,3 +451,4 @@ function goBack() {
         </div>
     `;
 }
+
