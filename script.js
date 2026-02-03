@@ -448,6 +448,7 @@ function goBack() {
         <div class="welcome">
             <h2>Дарова</h2>
             <p>Сверху номера заданий, жми и получай код</p>
+            <button class="iq-btn" onclick="iqTest.open()">Тест на IQ</button>
         </div>
     `;
 }
@@ -457,47 +458,46 @@ class IQTest {
         this.iqScore = 0;
     }
 
-    open() {
-        const content = document.getElementById('content');
+open() {
+    const content = document.getElementById('content');
 
-        document.querySelectorAll('.task-btn').forEach(btn => {
-            btn.classList.remove('active');
-        });
+    document.querySelectorAll('.task-btn').forEach(btn => {
+        btn.classList.remove('active');
+    });
 
-        let tasksHTML = '';
-        for (let i = 1; i <= 27; i++) {
-            tasksHTML += `
-                <div class="iq-task-item">
-                    <input type="checkbox" id="iq-task-${i}" value="${i}" onchange="iqTest.toggleTask(${i})">
-                    <label for="iq-task-${i}">Задание ${i}</label>
-                </div>
-            `;
-        }
-
-        content.innerHTML = `
-            <div class="task-content">
-                <div class="task-header">
-                    <h2>Тест на IQ</h2>
-                </div>
-
-                <div class="task-description">
-                    <h3>Выбери какие задания из ЕГЭ ты решаешь</h3>
-                    <p>Каждое задание прибавляет по 3 IQ</p>
-                </div>
-
-                <div class="iq-tasks-grid">
-                    ${tasksHTML}
-                </div>
-
-                <div class="iq-result-container">
-                    <button class="iq-calculate-btn" onclick="iqTest.calculate()">Узнать свой IQ</button>
-                    <div id="iq-result" class="iq-result"></div>
-                </div>
+    let tasksHTML = '';
+    for (let i = 1; i <= 27; i++) {
+        tasksHTML += `
+            <div class="iq-task-item">
+                <input type="checkbox" id="iq-task-${i}" value="${i}" onchange="iqTest.toggleTask(${i})">
+                <label for="iq-task-${i}">Задание ${i}</label>
             </div>
         `;
-
-        window.scrollTo({ top: 0, behavior: 'smooth' });
     }
+
+    content.innerHTML = `
+        <div class="task-content">
+            <div class="task-header">
+                <h2>Тест на IQ</h2>
+            </div>
+
+            <div class="task-description">
+                <h3>Выбери какие задания из ЕГЭ ты решаешь</h3>
+            </div>
+
+            <div class="iq-tasks-grid">
+                ${tasksHTML}
+            </div>
+
+            <div class="iq-result-container">
+                <button class="iq-calculate-btn" onclick="iqTest.calculate()">Узнать свой IQ</button>
+                <div id="iq-result" class="iq-result"></div>
+            </div>
+        </div>
+    `;
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
 
     toggleTask(taskNumber) {
         if (this.selectedTasks.has(taskNumber)) {
@@ -544,4 +544,5 @@ class IQTest {
 }
 
 const iqTest = new IQTest();
+
 
