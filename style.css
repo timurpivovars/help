@@ -385,3 +385,9 @@ main {
     color: #495057;
     margin-top: 20px;
 }
+.iq-loading {
+    text-align: center;
+    font-size: 20px;
+    margin: 50px 0;
+    color: #667eea;
+}
