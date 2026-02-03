@@ -17,7 +17,7 @@ body {
     padding: 20px;
 }
 
-/* Navigation with task buttons */
+
 .task-navigation {
     background-color: #fff;
     padding: 20px;
@@ -59,7 +59,7 @@ body {
     background-color: #27ae60;
 }
 
-/* Main content */
+
 main {
     background-color: #fff;
     padding: 30px;
@@ -105,7 +105,7 @@ main {
     margin: 10px 0;
 }
 
-/* Task content */
+
 .task-content {
     animation: fadeIn 0.3s ease;
 }
@@ -156,7 +156,7 @@ main {
     margin-bottom: 10px;
 }
 
-/* Code block with copy button */
+
 .code-container {
     position: relative;
     margin: 20px 0;
@@ -229,7 +229,7 @@ main {
     background-color: #7f8c8d;
 }
 
-/* Responsive */
+
 @media (max-width: 768px) {
     .task-buttons {
         grid-template-columns: repeat(7, 1fr);
@@ -274,3 +274,4 @@ main {
     line-height: 1.8;
     color: #333;
 }
+
