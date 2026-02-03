@@ -451,4 +451,97 @@ function goBack() {
         </div>
     `;
 }
+class IQTest {
+    constructor() {
+        this.selectedTasks = new Set();
+        this.iqScore = 0;
+    }
+
+    open() {
+        const content = document.getElementById('content');
+
+        document.querySelectorAll('.task-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+
+        let tasksHTML = '';
+        for (let i = 1; i <= 27; i++) {
+            tasksHTML += `
+                <div class="iq-task-item">
+                    <input type="checkbox" id="iq-task-${i}" value="${i}" onchange="iqTest.toggleTask(${i})">
+                    <label for="iq-task-${i}">Задание ${i}</label>
+                </div>
+            `;
+        }
+
+        content.innerHTML = `
+            <div class="task-content">
+                <div class="task-header">
+                    <h2>Тест на IQ</h2>
+                </div>
+
+                <div class="task-description">
+                    <h3>Выбери какие задания из ЕГЭ ты решаешь</h3>
+                    <p>Каждое задание прибавляет по 3 IQ</p>
+                </div>
+
+                <div class="iq-tasks-grid">
+                    ${tasksHTML}
+                </div>
+
+                <div class="iq-result-container">
+                    <button class="iq-calculate-btn" onclick="iqTest.calculate()">Узнать свой IQ</button>
+                    <div id="iq-result" class="iq-result"></div>
+                </div>
+            </div>
+        `;
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    toggleTask(taskNumber) {
+        if (this.selectedTasks.has(taskNumber)) {
+            this.selectedTasks.delete(taskNumber);
+        } else {
+            this.selectedTasks.add(taskNumber);
+        }
+    }
+
+    calculate() {
+        const resultDiv = document.getElementById('iq-result');
+
+        if (this.selectedTasks.size === 0) {
+            resultDiv.innerHTML = '<p class="iq-score-text">Выбери хотя бы одно задание!</p>';
+            return;
+        }
+
+        if (this.selectedTasks.has(27)) {
+            this.iqScore = 1488;
+        } else {
+            this.iqScore = this.selectedTasks.size * 3;
+        }
+
+        resultDiv.innerHTML = `
+            <div class="iq-score-animation">
+                <h2>Твой IQ:</h2>
+                <div class="iq-score">${this.iqScore}</div>
+                <p class="iq-score-text">${this.getIQMessage()}</p>
+            </div>
+        `;
+    }
+
+    getIQMessage() {
+        if (this.iqScore === 1488) {
+            return '🔥';
+        } else if (this.iqScore >= 60) {
+            return 'Ты немного тупой';
+        } else if (this.iqScore >= 30) {
+            return 'Ты умнее тупого';
+        } else {
+            return 'Ты тупой';
+        }
+    }
+}
+
+const iqTest = new IQTest();
 
